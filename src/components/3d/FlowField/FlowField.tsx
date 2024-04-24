@@ -41,6 +41,7 @@ const Flowfield = () => {
   const bufferCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 1 / Math.pow(2, 53), 1);
   const renderTarget = useFBO(SIZE, SIZE, {
     minFilter: THREE.NearestFilter,
+    magFilter: THREE.NearestFilter,
     format: THREE.RGBAFormat,
     type: THREE.FloatType,
   });
