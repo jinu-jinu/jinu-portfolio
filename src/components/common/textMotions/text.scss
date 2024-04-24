@@ -1,0 +1,11 @@
+.fill-text {
+  position: relative;
+  overflow: hidden;
+
+  &__color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+}

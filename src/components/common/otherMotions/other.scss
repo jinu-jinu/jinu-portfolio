@@ -1,0 +1,10 @@
+.follw-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8vmax;
+  height: 8vmax;
+  border-radius: 50%;
+  backdrop-filter: invert(1) grayscale(1);
+  pointer-events: none;
+}

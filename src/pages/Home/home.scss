@@ -1,0 +1,22 @@
+.title {
+  &__arrow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    width: 6px;
+    height: 6px;
+    transform: rotateZ(45deg);
+  }
+  &__arrow-tail {
+    position: absolute;
+    top: 90%;
+    left: 45%;
+    border-right: 1px solid;
+    width: 6px;
+    height: 6px;
+    transform-origin: center bottom;
+    transform: translate3d(-45%, -90%, 0) scaleY(1.8);
+  }
+}
