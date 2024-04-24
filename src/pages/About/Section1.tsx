@@ -22,7 +22,7 @@ const Text1 = ({
         scale: idx === 0 ? 1 : scale,
         transformOrigin: "left bottom",
       }}
-      className="font-black text-[6vmax] h-[6.5vmax] flex justify-start items-center absolute top-0 left-[10%]"
+      className="text-[6vmax] h-[6.5vmax] flex justify-start items-center absolute top-0 left-[10%]"
     >
       {text}
     </motion.div>
@@ -60,7 +60,7 @@ const Text2 = ({
         scale: idx === 0 ? 1 : scale,
         transformOrigin: "right top",
       }}
-      className="font-black text-[6vmax] h-[6.5vmax] flex justify-start items-center"
+      className="text-[6vmax] h-[6.5vmax] flex justify-start items-center"
     >
       {text}
     </motion.div>
@@ -90,7 +90,7 @@ const Section1 = () => {
   ];
 
   return (
-    <div ref={ref} className="relative w-full h-[300vh]">
+    <div ref={ref} className="relative w-full h-[300vh] font-Noto font-black">
       <div className=" w-full h-screen sticky top-0 left-0">
         <div className="absolute top-[15%] left-[0%] w-full overflow-hidden h-[50%]">
           {arr.map((text, i, arr) => (

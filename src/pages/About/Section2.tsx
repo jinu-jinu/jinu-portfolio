@@ -34,7 +34,7 @@ const Blind = ({
         idx + 1 === len ? "text-red-600 border-none" : ""
       }`}
     >
-      <TextMarquee direction={idx % 2 ? "L" : "R"} text={text} textSize="4vmax" />
+      <TextMarquee direction={idx % 2 ? "L" : "R"} text={text} textSize="text-[4vmax]" />
     </motion.div>
   );
 };

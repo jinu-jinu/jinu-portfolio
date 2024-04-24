@@ -62,7 +62,7 @@ const TextMarquee = ({
   }, [value, view]);
 
   return (
-    <div className={`w-full h-full text-[${textSize}] overflow-hidden relative font-black`}>
+    <div className={`w-full h-full ${textSize} overflow-hidden relative font-black`}>
       <motion.span
         style={{
           x: value,
