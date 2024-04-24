@@ -105,9 +105,8 @@ const Flowfield = () => {
         </bufferGeometry>
         <shaderMaterial
           blending={THREE.AdditiveBlending}
+          transparent
           depthWrite={false}
-          depthTest={false}
-          transparent={true}
           fragmentShader={fragment}
           vertexShader={vertex}
           uniforms={uniforms.current}
