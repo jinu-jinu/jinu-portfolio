@@ -14,23 +14,19 @@ import Fluid from "./components/3d/Fluid/Fluid";
 import { AnimatePresence } from "framer-motion";
 import { isDarkMode } from "./utils/Utils";
 import { useLoadingActions } from "./stores/LoadingStore";
+import { useProgress } from "@react-three/drei";
 
 const AssetDownLoader = () => {
   const handleAssetDownload = useLoadingActions("handleAssetDownload");
   const navigate = useNavigate();
+  const { loaded, total } = useProgress();
 
   useEffect(() => {
-    const loadHandler = () => {
+    if (loaded === total) {
       navigate("/");
       handleAssetDownload(true);
-    };
-
-    window.addEventListener("load", loadHandler);
-
-    return () => {
-      window.removeEventListener("load", loadHandler);
-    };
-  }, []);
+    }
+  }, [loaded, total]);
   return null;
 };
 
@@ -83,8 +79,6 @@ const App = () => {
 
             <Loading />
             <Bridge />
-
-            {/* <Footer /> */}
           </div>
         </>
       </SmoothScroll>
