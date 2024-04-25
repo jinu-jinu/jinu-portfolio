@@ -33,6 +33,7 @@ export type LoadingStoreType = {
 };
 
 export type PathStoreType = {
+  prevPath: string | null;
   currentPath: string;
   nextPath: string | null;
   pageTransitionWait: boolean;
@@ -40,6 +41,7 @@ export type PathStoreType = {
   pageTransitionEnd: boolean;
 
   actions: {
+    handlePrevPath: (v: string) => void;
     handleCurrentPath: (v: string) => void;
     handleNextPath: (v: string) => void;
     handlePageTransitionWait: (v: boolean) => void;

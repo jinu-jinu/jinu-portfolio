@@ -20,13 +20,7 @@ const ToggleSwitch = () => {
   };
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="toggle-switch"
-      onClick={toggleSwitchHandler}
-    >
+    <motion.div whileHover={{ scale: 1.1 }} className="toggle-switch" onClick={toggleSwitchHandler}>
       <motion.div
         data-display="grid"
         className={`toggle-switch__btn ${

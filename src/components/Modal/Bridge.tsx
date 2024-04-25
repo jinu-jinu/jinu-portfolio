@@ -3,6 +3,7 @@ import {
   usePageTransitioning,
   useNextPath,
   usePageTransitionEnd,
+  useCurrentPath,
 } from "@/stores/PathStore";
 import { sleep } from "@/utils/Utils";
 import { animate, motion, useMotionValue, useMotionValueEvent, useTransform } from "framer-motion";
@@ -13,9 +14,11 @@ let step = 0;
 
 const Bridge = () => {
   const navigate = useNavigate();
+  const currentPath = useCurrentPath();
   const nextPath = useNextPath();
   const pageTransitioning = usePageTransitioning();
   const pageTransitionEnd = usePageTransitionEnd();
+  const handlePrevPath = usePathActions("handlePrevPath") as (v: string) => void;
   const handleCurrentPath = usePathActions("handleCurrentPath") as (v: string) => void;
   const handlePageTransitionWait = usePathActions("handlePageTransitionWait") as (
     v: boolean
@@ -41,7 +44,10 @@ const Bridge = () => {
   };
 
   useEffect(() => {
-    if (pageTransitioning) void startCountAnimation();
+    if (pageTransitioning) {
+      void startCountAnimation();
+      handlePrevPath(currentPath);
+    }
   }, [pageTransitioning]);
 
   useEffect(() => {

@@ -8,12 +8,14 @@ import { create } from "zustand";
   경로와 페이지 트랜지션에 관련된 상태를 함께 묶는게 좋다
 */
 const pathStore = create<PathStoreType>((set) => ({
+  prevPath: null,
   currentPath: "/",
   nextPath: null,
   pageTransitionWait: true,
   pageTransitioning: false,
   pageTransitionEnd: false,
   actions: {
+    handlePrevPath: (v) => set(() => ({ prevPath: v })),
     handleCurrentPath: (v) => set(() => ({ currentPath: v })),
     handleNextPath: (v) => set(() => ({ nextPath: v })),
     handlePageTransitionWait: (v) => set(() => ({ pageTransitionWait: v })),
@@ -22,6 +24,7 @@ const pathStore = create<PathStoreType>((set) => ({
   },
 }));
 
+const usePrevPath = () => pathStore((state) => state.prevPath);
 const useCurrentPath = () => pathStore((state) => state.currentPath);
 const useNextPath = () => pathStore((state) => state.nextPath);
 const usePageTransitionWait = () => pathStore((state) => state.pageTransitionWait);
@@ -32,6 +35,7 @@ const usePathActions = (name: keyof PathStoreType["actions"]) =>
   pathStore((state) => state.actions[name]);
 
 export {
+  usePrevPath,
   useCurrentPath,
   useNextPath,
   usePageTransitionWait,
