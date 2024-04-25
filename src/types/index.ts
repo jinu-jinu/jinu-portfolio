@@ -1,7 +1,25 @@
 import { Mesh } from "three";
 import { GLTF } from "three/examples/jsm/Addons.js";
 
+export type GLTFType = GLTF & {
+  nodes: {
+    J: Mesh;
+  };
+};
+
+export type ModelType = {
+  J: Mesh;
+};
+
 export type DataDisplayType = "grid" | "list";
+
+export type CardDataType = {
+  title: string;
+  projectCode: string;
+  year: string;
+  technology: string;
+  image: string;
+};
 
 export type dataDisplayElement = EventTarget & {
   dataset: {
@@ -49,20 +67,11 @@ export type PathStoreType = {
     handlePageTransitionEnd: (v: boolean) => void;
   };
 };
-export type CardDataType = {
-  title: string;
-  projectCode: string;
-  year: string;
-  technology: string;
-  image: string;
-};
 
-export type GLTFType = GLTF & {
-  nodes: {
-    J: Mesh;
+export type ProjectDataStore = {
+  projectData: CardDataType[];
+  currentData: CardDataType | null;
+  actions: {
+    handleCurrentData: (v: CardDataType) => void;
   };
-};
-
-export type ModelType = {
-  J: Mesh;
 };

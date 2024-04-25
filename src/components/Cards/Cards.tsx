@@ -1,4 +1,3 @@
-import { CardData } from "@/data";
 import Card from "./Card";
 import "./cards.scss";
 import { motion } from "framer-motion";
@@ -7,11 +6,14 @@ import { useState } from "react";
 import FollowCursor from "../common/otherMotions/FollowCursor";
 import { useIsLoading } from "@/stores/LoadingStore";
 import { usePageTransitioning, usePathActions } from "@/stores/PathStore";
+import { useProjectData, useProjectDataActions } from "@/stores/ProjectDataStore";
 
 const Cards = () => {
+  const projectData = useProjectData();
   const isLoading = useIsLoading();
   const pageTransitioning = usePageTransitioning();
   const [isHovered, setIsHovered] = useState<string | null>(null);
+  const handleCurrentData = useProjectDataActions("handleCurrentData");
   const handleNextPath = usePathActions("handleNextPath") as (v: string) => void;
   const handlePageTransitionWait = usePathActions("handlePageTransitionWait") as (
     v: boolean
@@ -29,7 +31,7 @@ const Cards = () => {
       animate={isLoading ? "initial" : "visible"}
       className="w-full grid grid-cols-1 gap-y-14 lg:grid-cols-2 lg:gap-x-14"
       onMouseMove={(e) => {
-        const card = (e.target as HTMLElement).closest(".card");
+        const card = (e.target as HTMLElement).closest(".home-project-card");
         if (!card) return setIsHovered("gap");
         if (isHovered === card.id) return;
         setIsHovered(card.id);
@@ -38,19 +40,19 @@ const Cards = () => {
         setIsHovered(null);
       }}
       onClick={(e) => {
-        const card = (e.target as HTMLElement).closest(".card");
+        const card = (e.target as HTMLElement).closest(".home-project-card");
         if (!card || pageTransitioning) return;
-        console.log(card.id);
 
+        const clickedData = projectData.find((data) => data.projectCode === card.id);
+        if (!clickedData) return;
+
+        handleCurrentData(clickedData);
         handleNextPath(`/project/${card.id}`);
         handlePageTransitionWait(false);
         handlePageTransitioning(true);
       }}
     >
-      {CardData.map((data) => {
-        /*
-          id를 BD 001 이 아니라 숫자만 쓰기
-        */
+      {projectData.map((data) => {
         return <Card {...data} key={data.projectCode} isHovered={isHovered} />;
       })}
 

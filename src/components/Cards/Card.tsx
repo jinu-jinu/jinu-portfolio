@@ -14,7 +14,7 @@ const Card = ({
   const hovered = isHovered === projectCode;
 
   return (
-    <div className="cursor-pointer card" id={projectCode}>
+    <div className="cursor-pointer home-project-card" id={projectCode}>
       <div className="w-full h-full relative text-white">
         <div className="w-full h-full rounded-3xl overflow-hidden flex justify-center items-center">
           <IllusionImage img={image} hovered={hovered} />

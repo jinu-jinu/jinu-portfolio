@@ -2,7 +2,7 @@ import { hor1, hor2, hor3, hor4, hor5, hor6, hor7 } from "@/assets";
 
 import { CardDataType } from "@/types";
 
-export const CardData: CardDataType[] = [
+export const ProjectData: CardDataType[] = [
   {
     title: "VIKING",
     projectCode: "23001",

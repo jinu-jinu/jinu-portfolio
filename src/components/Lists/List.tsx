@@ -29,7 +29,7 @@ const List = ({
       variants={variants}
       initial="initial"
       animate={!isHovered || hovered ? "initial" : "hovered"}
-      className="list dark:border-white"
+      className="home-project-list dark:border-white"
       id={projectCode}
       onClick={() => {
         if (isHovered !== projectCode) return;
@@ -46,7 +46,7 @@ const List = ({
         variants={imgVariants}
         initial="initial"
         animate={hovered ? "hovered" : "initial"}
-        className="list__img center pointer-events-none w-[40vmax]"
+        className="home-project-list__img center pointer-events-none w-[40vmax]"
       />
 
       <ArrowButton isHovered={hovered} />
