@@ -1,11 +1,19 @@
+import { useIsLoading } from "@/stores/LoadingStore";
+import { motion } from "framer-motion";
+
 const Footer = () => {
-  /*
-    마그네틱으로 만들고
-    레이아웃 다시 짜기
-  */
+  const isLoading = useIsLoading();
 
   return (
-    <footer className="pt-[10vmax] pb-[15vmax] xl:pb-[10vmax]">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      transition={{
+        delay: 0.3,
+        duration: 1,
+      }}
+      animate={isLoading ? { opacity: 0 } : { opacity: 1 }}
+      className="pt-[10vmax] pb-[15vmax] xl:pb-[10vmax]"
+    >
       <div className="flex flex-col items-end py-[2vmax] border-t-2 border-b-2 border-black dark:border-white sm:flex-row sm:justify-between sm:items-center">
         <div className="flex flex-col items-end text-[1.5vmax] leading-[1.7vmax] sm:items-start">
           <a href="mailto:kjwkjw5153@gmail.com">
@@ -17,7 +25,7 @@ const Footer = () => {
           JINU KIM
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

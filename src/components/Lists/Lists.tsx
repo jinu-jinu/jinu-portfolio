@@ -35,7 +35,7 @@ const Lists = () => {
       }}
     >
       {CardData.map((data) => (
-        <List key={data.uid} {...data} isHovered={isHovered} />
+        <List key={data.projectCode} {...data} isHovered={isHovered} />
       ))}
 
       <FollowCursor trigger={!!isHovered} />

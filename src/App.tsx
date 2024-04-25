@@ -15,6 +15,7 @@ import { AnimatePresence } from "framer-motion";
 import { isDarkMode } from "./utils/Utils";
 import { useLoadingActions } from "./stores/LoadingStore";
 import { useProgress } from "@react-three/drei";
+import Project from "./pages/Project/Project";
 
 const AssetDownLoader = () => {
   const handleAssetDownload = useLoadingActions("handleAssetDownload");
@@ -22,7 +23,6 @@ const AssetDownLoader = () => {
   const { loaded, total } = useProgress();
 
   useEffect(() => {
-    console.log(loaded, total);
     if (loaded === total) {
       navigate("/");
       handleAssetDownload(true);
@@ -73,6 +73,7 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/project/:id" element={<Project />} />
                 <Route path="/*" element={<Error />} />
               </Routes>
             </AnimatePresence>

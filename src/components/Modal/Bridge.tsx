@@ -1,12 +1,26 @@
-import { usePathActions, usePageTransitioning } from "@/stores/PathStore";
+import {
+  usePathActions,
+  usePageTransitioning,
+  useNextPath,
+  usePageTransitionEnd,
+} from "@/stores/PathStore";
 import { sleep } from "@/utils/Utils";
 import { animate, motion, useMotionValue, useMotionValueEvent, useTransform } from "framer-motion";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 let step = 0;
 
 const Bridge = () => {
+  const navigate = useNavigate();
+  const nextPath = useNextPath();
   const pageTransitioning = usePageTransitioning();
+  const pageTransitionEnd = usePageTransitionEnd();
+  const handleCurrentPath = usePathActions("handleCurrentPath") as (v: string) => void;
+  const handlePageTransitionWait = usePathActions("handlePageTransitionWait") as (
+    v: boolean
+  ) => void;
+  const handlePageTransitioning = usePathActions("handlePageTransitioning") as (v: boolean) => void;
   const handlePageTransitionEnd = usePathActions("handlePageTransitionEnd") as (v: boolean) => void;
 
   const count = useMotionValue(0);
@@ -28,6 +42,16 @@ const Bridge = () => {
   useEffect(() => {
     if (pageTransitioning) void startCountAnimation();
   }, [pageTransitioning]);
+
+  useEffect(() => {
+    if (pageTransitionEnd) {
+      handlePageTransitionWait(true);
+      navigate(nextPath!);
+      handleCurrentPath(nextPath!);
+      handlePageTransitionEnd(false);
+      handlePageTransitioning(false);
+    }
+  }, [pageTransitionEnd]);
 
   useMotionValueEvent(count, "animationComplete", () => {
     if (step === 2) {

@@ -6,10 +6,17 @@ import { opacityYDownVisible } from "@/utils/Variants";
 import { useState } from "react";
 import FollowCursor from "../common/otherMotions/FollowCursor";
 import { useIsLoading } from "@/stores/LoadingStore";
+import { usePageTransitioning, usePathActions } from "@/stores/PathStore";
 
 const Cards = () => {
   const isLoading = useIsLoading();
+  const pageTransitioning = usePageTransitioning();
   const [isHovered, setIsHovered] = useState<string | null>(null);
+  const handleNextPath = usePathActions("handleNextPath") as (v: string) => void;
+  const handlePageTransitionWait = usePathActions("handlePageTransitionWait") as (
+    v: boolean
+  ) => void;
+  const handlePageTransitioning = usePathActions("handlePageTransitioning") as (v: boolean) => void;
 
   return (
     <motion.div
@@ -30,9 +37,21 @@ const Cards = () => {
       onMouseLeave={() => {
         setIsHovered(null);
       }}
+      onClick={(e) => {
+        const card = (e.target as HTMLElement).closest(".card");
+        if (!card || pageTransitioning) return;
+        console.log(card.id);
+
+        handleNextPath(`/project/${card.id}`);
+        handlePageTransitionWait(false);
+        handlePageTransitioning(true);
+      }}
     >
       {CardData.map((data) => {
-        return <Card {...data} key={data.uid} isHovered={isHovered} />;
+        /*
+          id를 BD 001 이 아니라 숫자만 쓰기
+        */
+        return <Card {...data} key={data.projectCode} isHovered={isHovered} />;
       })}
 
       <FollowCursor trigger={!!isHovered} />

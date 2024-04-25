@@ -1,37 +1,15 @@
 import { Underline } from "@/components/common/textMotions";
-import {
-  useCurrentPath,
-  useNextPath,
-  usePathActions,
-  usePageTransitionEnd,
-  usePageTransitioning,
-} from "@/stores/PathStore";
-import { MouseEvent, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCurrentPath, usePathActions, usePageTransitioning } from "@/stores/PathStore";
+import { MouseEvent } from "react";
 
 const Nav = () => {
-  const navigate = useNavigate();
   const currentPath = useCurrentPath();
-  const nextPath = useNextPath();
-  const pageTransitionEnd = usePageTransitionEnd();
   const pageTransitioning = usePageTransitioning();
-  const handleCurrentPath = usePathActions("handleCurrentPath") as (v: string) => void;
   const handleNextPath = usePathActions("handleNextPath") as (v: string) => void;
   const handlePageTransitionWait = usePathActions("handlePageTransitionWait") as (
     v: boolean
   ) => void;
   const handlePageTransitioning = usePathActions("handlePageTransitioning") as (v: boolean) => void;
-  const handlePageTransitionEnd = usePathActions("handlePageTransitionEnd") as (v: boolean) => void;
-
-  useEffect(() => {
-    if (pageTransitionEnd) {
-      handlePageTransitionWait(true);
-      navigate(nextPath!);
-      handleCurrentPath(nextPath!);
-      handlePageTransitionEnd(false);
-      handlePageTransitioning(false);
-    }
-  }, [pageTransitionEnd]);
 
   const clickHandler = (e: MouseEvent) => {
     e.preventDefault();

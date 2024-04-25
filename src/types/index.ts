@@ -48,7 +48,6 @@ export type PathStoreType = {
   };
 };
 export type CardDataType = {
-  uid: string;
   title: string;
   projectCode: string;
   year: string;
