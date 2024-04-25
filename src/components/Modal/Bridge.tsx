@@ -35,6 +35,7 @@ const Bridge = () => {
     await animate(count, 0.5, { duration: 1, ease: "circIn" });
     await sleep(1000);
     count.set(0.5);
+    window.scrollTo(0, 0);
     ++step;
     await animate(count, 1, { duration: 1, ease: "circIn" });
   };

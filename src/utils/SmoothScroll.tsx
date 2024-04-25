@@ -16,9 +16,7 @@ const SmoothScroll = ({ children }: { children: JSX.Element }) => {
 
   useEffect(() => {
     if (isLoading || pageTransitioning) lenis.stop();
-    else {
-      lenis.start();
-    }
+    else lenis.start();
   }, [isLoading, pageTransitioning, lenis]);
 
   useEffect(() => {
