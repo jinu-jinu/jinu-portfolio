@@ -18,7 +18,8 @@ export type CardDataType = {
   projectCode: string;
   year: string;
   technology: string;
-  image: string;
+  titleimage: string;
+  images: string[];
 };
 
 export type dataDisplayElement = EventTarget & {

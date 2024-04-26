@@ -1,8 +1,10 @@
-import { useGLTF } from "@react-three/drei";
+import { Suspense, lazy } from "react";
 import FlowField from "./FlowField/FlowField";
-import Particles from "./ParticleSimulation/Particles";
-import { GLTFType } from "@/types";
 import { useCurrentPath } from "@/stores/PathStore";
+import { useGLTF } from "@react-three/drei";
+import { GLTFType } from "@/types";
+
+const Particles = lazy(() => import("./ParticleSimulation/Particles"));
 
 const Experience = () => {
   const { nodes } = useGLTF("/j.glb") as unknown as GLTFType;
@@ -11,7 +13,11 @@ const Experience = () => {
   return (
     <>
       <FlowField />
-      {currentPath === "/contact" ? <Particles nodes={nodes} /> : null}
+      {currentPath === "/contact" ? (
+        <Suspense fallback={null}>
+          <Particles nodes={nodes} />
+        </Suspense>
+      ) : null}
     </>
   );
 };

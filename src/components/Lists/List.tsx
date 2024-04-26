@@ -17,7 +17,7 @@ const List = ({
   year,
   title,
   technology,
-  image,
+  titleimage,
   isHovered,
 }: CardDataType & {
   isHovered: null | string;
@@ -42,7 +42,7 @@ const List = ({
       <div className="hidden lg:block lg:flex-[0.3]">{technology}</div>
 
       <motion.img
-        src={image}
+        src={titleimage}
         variants={imgVariants}
         initial="initial"
         animate={hovered ? "hovered" : "initial"}

@@ -8,7 +8,7 @@ const Card = ({
   technology,
   title,
   year,
-  image,
+  titleimage,
   isHovered,
 }: CardDataType & { isHovered: string | null }) => {
   const hovered = isHovered === projectCode;
@@ -17,7 +17,7 @@ const Card = ({
     <div className="cursor-pointer home-project-card" id={projectCode}>
       <div className="w-full h-full relative text-white">
         <div className="w-full h-full rounded-3xl overflow-hidden flex justify-center items-center">
-          <IllusionImage img={image} hovered={hovered} />
+          <IllusionImage img={titleimage} hovered={hovered} />
         </div>
 
         <div className="absolute top-0 left-0 w-full flex justify-between p-[2vmax]">

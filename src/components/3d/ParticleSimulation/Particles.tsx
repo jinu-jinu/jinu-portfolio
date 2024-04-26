@@ -3,7 +3,6 @@ import { useThree, useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { AdditiveBlending, Texture, Vector2, Vector3 } from "three";
 import { GPUComputationRenderer } from "three/examples/jsm/misc/GPUComputationRenderer.js";
-
 import simPosition from "./shaders/simPosition.glsl?raw";
 import simVelocity from "./shaders/simVelocity.glsl?raw";
 import vertex from "./shaders/vertex.glsl?raw";
