@@ -1,8 +1,7 @@
-import { usePageTransitioning, usePathActions, usePrevPath } from "@/stores/PathStore";
+import { usePageTransitioning, usePathActions } from "@/stores/PathStore";
 import { motion } from "framer-motion";
 
 const BackButton = () => {
-  const prevPath = usePrevPath();
   const pageTransitioning = usePageTransitioning();
   const handleNextPath = usePathActions("handleNextPath") as (v: string) => void;
   const handlePageTransitionWait = usePathActions("handlePageTransitionWait") as (
@@ -11,9 +10,9 @@ const BackButton = () => {
   const handlePageTransitioning = usePathActions("handlePageTransitioning") as (v: boolean) => void;
 
   const clickHandler = () => {
-    if (!prevPath || pageTransitioning) return;
+    if (pageTransitioning) return;
 
-    handleNextPath(prevPath);
+    handleNextPath("/");
     handlePageTransitionWait(false);
     handlePageTransitioning(true);
   };

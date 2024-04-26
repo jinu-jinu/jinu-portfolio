@@ -1,4 +1,4 @@
-import { CardDataType } from "@/types";
+import { ProjectDataType } from "@/types";
 import IllusionImage from "@/components/common/ImageMotions/IllusionImage";
 import { UpDownHover } from "@/components/common/textMotions";
 import { ArrowButton } from "@/components/common/ButtonMotions";
@@ -10,7 +10,7 @@ const Card = ({
   year,
   titleimage,
   isHovered,
-}: CardDataType & { isHovered: string | null }) => {
+}: ProjectDataType & { isHovered: string | null }) => {
   const hovered = isHovered === projectCode;
 
   return (

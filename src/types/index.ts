@@ -13,13 +13,15 @@ export type ModelType = {
 
 export type DataDisplayType = "grid" | "list";
 
-export type CardDataType = {
+export type ProjectDataType = {
   title: string;
   projectCode: string;
   year: string;
   technology: string;
   titleimage: string;
   images: string[];
+  nextProjectCode: string;
+  nextProjectTitle: string;
 };
 
 export type dataDisplayElement = EventTarget & {
@@ -70,9 +72,9 @@ export type PathStoreType = {
 };
 
 export type ProjectDataStore = {
-  projectData: CardDataType[];
-  currentData: CardDataType | null;
+  projectData: ProjectDataType[];
+  currentData: ProjectDataType | null;
   actions: {
-    handleCurrentData: (v: CardDataType) => void;
+    handleCurrentData: (v: string) => void;
   };
 };

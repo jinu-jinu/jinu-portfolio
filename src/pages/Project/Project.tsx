@@ -1,36 +1,40 @@
 import { useCurrentData } from "@/stores/ProjectDataStore";
 import "./project.scss";
 import Title from "./Title";
+import Images from "./Images";
+import { motion } from "framer-motion";
+import NextProject from "./NextProject";
+import { usePageTransitioning } from "@/stores/PathStore";
+import Footer from "@/components/Footer/Footer";
 
 const Project = () => {
   const currentData = useCurrentData();
+  const pageTransitioning = usePageTransitioning();
 
-  if (!currentData) return <div>WAIT</div>;
-
-  /*
-    글자 크기 맞추고
-    넥스트 만들고
-    컴포넌트 분리
-  */
+  if (!currentData) return <div className="">WAIT</div>;
 
   return (
-    <div className="w-full h-auto px-[24px] md:px-[48px] lg:px-[64px] pt-[7rem] sm:pt-[20vmin] lg:pt-0">
-      <div className="w-full space-y-[2rem] flex flex-col items-center lg:flex-row lg:items-start">
-        {/* 왼쪽 */}
+    <motion.div
+      initial={{ opacity: 0, filter: "blur(10px)" }}
+      animate={
+        pageTransitioning
+          ? { opacity: 0, filter: "blur(10px)" }
+          : { opacity: 1, filter: "blur(0px)" }
+      }
+      className="w-full h-auto px-[24px] md:px-[48px] lg:px-[64px] pt-[7rem] sm:pt-[20vmin] lg:pt-0"
+    >
+      <div className="w-full space-y-[2rem] flex flex-col items-center lg:flex-row lg:items-start lg:space-y-0">
         <Title {...currentData} />
-
-        {/* 오른쪽 */}
-        <div className="flex-1 space-y-[3rem] flex flex-col lg:pt-[20vmin]">
-          {currentData.images.map((img, i) => (
-            <div key={`project-${img}-${i}`} className="">
-              <img src={img} className="w-[50vmax] h-[30vmax] rounded-xl" />
-            </div>
-          ))}
-        </div>
+        <Images images={currentData.images} />
       </div>
 
-      <div className="w-full h-[50vh] bg-red-300">next</div>
-    </div>
+      <NextProject
+        nextProjectCode={currentData.nextProjectCode}
+        nextProjectTitle={currentData.nextProjectTitle}
+      />
+
+      <Footer />
+    </motion.div>
   );
 };
 

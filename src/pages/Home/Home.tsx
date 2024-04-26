@@ -15,13 +15,13 @@ const Home = () => {
 
   return (
     <motion.section
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0, filter: "blur(10px)" }}
       animate={
         isLoading || currentPath !== "/"
-          ? { opacity: 0 }
+          ? { opacity: 0, filter: "blur(10px)" }
           : pageTransitioning
-          ? { opacity: 0 }
-          : { opacity: 1 }
+          ? { opacity: 0, filter: "blur(10px)" }
+          : { opacity: 1, filter: "blur(0px)" }
       }
       className="w-full h-auto px-[24px] md:px-[48px] lg:px-[64px]"
     >

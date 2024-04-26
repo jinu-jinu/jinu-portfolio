@@ -11,13 +11,13 @@ const About = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0, filter: "blur(10px)" }}
       animate={
         currentPath !== "/about"
-          ? { opacity: 0 }
+          ? { opacity: 0, filter: "blur(10px)" }
           : pageTransitioning
-          ? { opacity: 0 }
-          : { opacity: 1 }
+          ? { opacity: 0, filter: "blur(10px)" }
+          : { opacity: 1, filter: "blur(0px)" }
       }
       className="w-full h-auto"
     >
@@ -29,16 +29,3 @@ const About = () => {
 };
 
 export default About;
-
-/*
-  블라인드는 제일 마지막에만 하는걸로 하고
-  텍스트 업, 스케일로 변경하기
-
-  폰트 prompt체로 변경하기
-
-  스크롤 애니메이션과 웹그래픽스를 사용해서
-  시선을 끄는 웹사이트를 제작합니다
-
-  안녕하세요 크리에이티브 개발자 김진우입니다 스크롤 애니메이션과 웹그래픽스로 시선을 사로잡는 웹사이트를 만듭니다
-
-*/

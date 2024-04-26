@@ -14,12 +14,14 @@ import {
   vintageCar6,
 } from "@/assets";
 
-import { CardDataType } from "@/types";
+import { ProjectDataType } from "@/types";
 
-export const ProjectData: CardDataType[] = [
+export const ProjectData: ProjectDataType[] = [
   {
     title: "VIKING",
+    nextProjectTitle: "GYRO SWING",
     projectCode: "23001",
+    nextProjectCode: "23002",
     year: "2023",
     technology: "BLENDER · ANIMATION",
     titleimage: hor1,
@@ -27,56 +29,62 @@ export const ProjectData: CardDataType[] = [
   },
   {
     title: "GYRO SWING",
+    nextProjectTitle: "FERRIS WHEEL",
     projectCode: "23002",
+    nextProjectCode: "23003",
     year: "2023",
     technology: "BLENDER · ANIMATION",
     titleimage: hor2,
-
     images: [vintageCar1, vintageCar2, vintageCar3, vintageCar4, vintageCar5, vintageCar6],
   },
   {
     title: "FERRIS WHEEL",
+    nextProjectTitle: "WALK MAN",
     projectCode: "23003",
+    nextProjectCode: "23004",
     year: "2023",
     technology: "BLENDER · ANIMATION",
     titleimage: hor3,
-
     images: [vintageCar1, vintageCar2, vintageCar3, vintageCar4, vintageCar5, vintageCar6],
   },
   {
     title: "WALK MAN",
+    nextProjectTitle: "VINTAGE CAR",
     projectCode: "23004",
+    nextProjectCode: "23005",
     year: "2023",
     technology: "BLENDER · PRODUCT",
     titleimage: hor4,
-
     images: [vintageCar1, vintageCar2, vintageCar3, vintageCar4, vintageCar5, vintageCar6],
   },
   {
     title: "VINTAGE CAR",
+    nextProjectTitle: "MIXX CITY",
     projectCode: "23005",
+    nextProjectCode: "23006",
     year: "2023",
     technology: "BLENDER · PRODUCT",
     titleimage: hor5,
-
     images: [vintageCar1, vintageCar2, vintageCar3, vintageCar4, vintageCar5, vintageCar6],
   },
   {
     title: "MIXX CITY",
+    nextProjectTitle: "MIXX ROOM",
     projectCode: "23006",
+    nextProjectCode: "23007",
     year: "2023",
     technology: "BLENDER · ENVIRONMENT",
     titleimage: hor6,
-
     images: [vintageCar1, vintageCar2, vintageCar3, vintageCar4, vintageCar5, vintageCar6],
   },
   {
     title: "MIXX ROOM",
+    nextProjectTitle: "VIKING",
     projectCode: "23007",
+    nextProjectCode: "23001",
     year: "2024",
     technology: "BLENDER · SPACE DESIGN",
     titleimage: hor7,
-
     images: [vintageCar1, vintageCar2, vintageCar3, vintageCar4, vintageCar5, vintageCar6],
   },
 ];

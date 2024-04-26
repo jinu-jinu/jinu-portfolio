@@ -6,7 +6,12 @@ const projectDataStore = create<ProjectDataStore>((set) => ({
   projectData: ProjectData,
   currentData: null,
   actions: {
-    handleCurrentData: (v) => set(() => ({ currentData: v })),
+    handleCurrentData: (v) =>
+      set((d) => {
+        const projectData = d.projectData;
+        const res = projectData.find((data) => data.projectCode === v);
+        return { currentData: res };
+      }),
   },
 }));
 

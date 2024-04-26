@@ -46,10 +46,7 @@ const Lists = () => {
         const list = (e.target as HTMLElement).closest(".home-project-list");
         if (!list || pageTransitioning) return;
 
-        const clickedData = projectData.find((data) => data.projectCode === list.id);
-        if (!clickedData) return;
-
-        handleCurrentData(clickedData);
+        handleCurrentData(list.id);
         handleNextPath(`/project/${list.id}`);
         handlePageTransitionWait(false);
         handlePageTransitioning(true);

@@ -43,10 +43,7 @@ const Cards = () => {
         const card = (e.target as HTMLElement).closest(".home-project-card");
         if (!card || pageTransitioning) return;
 
-        const clickedData = projectData.find((data) => data.projectCode === card.id);
-        if (!clickedData) return;
-
-        handleCurrentData(clickedData);
+        handleCurrentData(card.id);
         handleNextPath(`/project/${card.id}`);
         handlePageTransitionWait(false);
         handlePageTransitioning(true);

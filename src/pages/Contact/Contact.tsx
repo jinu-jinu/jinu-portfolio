@@ -50,13 +50,13 @@ const Contact = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0, filter: "blur(10px)" }}
       animate={
         currentPath !== "/contact"
-          ? { opacity: 0 }
+          ? { opacity: 0, filter: "blur(10px)" }
           : pageTransitioning
-          ? { opacity: 0 }
-          : { opacity: 1 }
+          ? { opacity: 0, filter: "blur(10px)" }
+          : { opacity: 1, filter: "blur(0px)" }
       }
       className="w-full h-screen flex justify-center p-6"
     >

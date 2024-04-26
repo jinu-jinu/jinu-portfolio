@@ -1,4 +1,4 @@
-import { CardDataType } from "@/types";
+import { ProjectDataType } from "@/types";
 import { motion } from "framer-motion";
 import { ArrowButton } from "../common/ButtonMotions";
 
@@ -19,7 +19,7 @@ const List = ({
   technology,
   titleimage,
   isHovered,
-}: CardDataType & {
+}: ProjectDataType & {
   isHovered: null | string;
 }) => {
   const hovered = isHovered === projectCode;
