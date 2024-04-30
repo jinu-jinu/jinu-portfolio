@@ -22,6 +22,7 @@ export type ProjectDataType = {
   images: string[];
   nextProjectCode: string;
   nextProjectTitle: string;
+  description: string;
 };
 
 export type dataDisplayElement = EventTarget & {

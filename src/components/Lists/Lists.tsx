@@ -3,7 +3,6 @@ import { useState } from "react";
 import "./lists.scss";
 import { motion } from "framer-motion";
 import { opacityYDownVisible } from "@/utils/Variants";
-import FollowCursor from "../common/otherMotions/FollowCursor";
 import { useIsLoading } from "@/stores/LoadingStore";
 import { useProjectData, useProjectDataActions } from "@/stores/ProjectDataStore";
 import { usePageTransitioning, usePathActions } from "@/stores/PathStore";
@@ -55,8 +54,6 @@ const Lists = () => {
       {projectData.map((data) => (
         <List key={data.projectCode} {...data} isHovered={isHovered} />
       ))}
-
-      <FollowCursor trigger={!!isHovered} />
     </motion.div>
   );
 };

@@ -3,7 +3,6 @@ import "./cards.scss";
 import { motion } from "framer-motion";
 import { opacityYDownVisible } from "@/utils/Variants";
 import { useState } from "react";
-import FollowCursor from "../common/otherMotions/FollowCursor";
 import { useIsLoading } from "@/stores/LoadingStore";
 import { usePageTransitioning, usePathActions } from "@/stores/PathStore";
 import { useProjectData, useProjectDataActions } from "@/stores/ProjectDataStore";
@@ -52,8 +51,6 @@ const Cards = () => {
       {projectData.map((data) => {
         return <Card {...data} key={data.projectCode} isHovered={isHovered} />;
       })}
-
-      <FollowCursor trigger={!!isHovered} />
     </motion.div>
   );
 };

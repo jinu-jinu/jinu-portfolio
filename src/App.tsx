@@ -16,6 +16,7 @@ import { isDarkMode } from "./utils/Utils";
 import { useLoadingActions } from "./stores/LoadingStore";
 import { useProgress } from "@react-three/drei";
 import Project from "./pages/Project/Project";
+import FollowCursor from "./components/common/otherMotions/FollowCursor";
 
 const AssetDownLoader = () => {
   const handleAssetDownload = useLoadingActions("handleAssetDownload");
@@ -66,6 +67,7 @@ const App = () => {
 
           <div className="font-Prompt bg-white dark:bg-black text-black dark:text-white theme-transition">
             <UserInterface />
+            <FollowCursor />
 
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
