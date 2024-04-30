@@ -31,7 +31,7 @@ const Blind = ({
         opacity,
       }}
       className={`w-full border-b border-[#000] dark:border-[#fff] bg-[#fff] dark:bg-[#000] ${
-        idx + 1 === len ? "text-red-600 border-none" : ""
+        idx + 1 === len ? "text-orange-500 border-none" : ""
       }`}
     >
       <TextMarquee direction={idx % 2 ? "L" : "R"} text={text} textSize="text-[4vmax]" />
@@ -60,7 +60,7 @@ const Section2 = () => {
   ];
 
   return (
-    <div ref={ref} className="w-full h-[500vh] relative">
+    <div ref={ref} className="w-full h-[400vh] relative">
       <div className="w-full h-screen flex flex-col sticky top-0 left-0">
         {arr.map((text, i) => (
           <Blind key={i} idx={i} len={arr.length} scrollYProgress={scrollYProgress} text={text} />

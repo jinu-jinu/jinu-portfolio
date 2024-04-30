@@ -40,7 +40,6 @@ const App = () => {
     document.documentElement.classList.add(isDarkMode());
   }, []);
 
-  console.log("app");
   return (
     <>
       <AssetDownLoader />
@@ -53,7 +52,7 @@ const App = () => {
               top: 0,
               left: 0,
               width: "100%",
-              height: "100vh",
+              height: "100dvh",
               pointerEvents: "none",
             }}
           >

@@ -67,7 +67,7 @@ const Hero = () => {
   const delays = [0, 0.4, 0.8, 1.2, 1.2, 1.6, 1.8, 2.2, 2.5, 2.8, 3.2, 3.5, 3.8];
 
   return (
-    <section className="text-black dark:text-white w-full h-[100vh]">
+    <section className="text-black dark:text-white w-full h-[100dvh]">
       <div className="font-Prompt flex flex-col items-center  justify-center w-full h-full">
         <div className="flex">
           <div className="overflow-hidden">

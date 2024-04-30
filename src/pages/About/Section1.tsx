@@ -90,7 +90,7 @@ const Section1 = () => {
   ];
 
   return (
-    <div ref={ref} className="relative w-full h-[300vh] font-Noto font-black">
+    <div ref={ref} className="relative w-full h-[200vh] font-Noto font-black">
       <div className=" w-full h-screen sticky top-0 left-0">
         <div className="absolute top-[15%] left-[0%] w-full overflow-hidden h-[50%]">
           {arr.map((text, i, arr) => (
