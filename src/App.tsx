@@ -18,6 +18,12 @@ import { useProgress } from "@react-three/drei";
 import Project from "./pages/Project/Project";
 import FollowCursor from "./components/common/otherMotions/FollowCursor";
 
+/*
+  쇼케이스 홈페이지도 추가하기
+  
+  3D 모델링을 전시하는 사이트
+*/
+
 const AssetDownLoader = () => {
   const handleAssetDownload = useLoadingActions("handleAssetDownload");
   const navigate = useNavigate();

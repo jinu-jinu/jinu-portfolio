@@ -56,7 +56,7 @@ export const ProjectData: ProjectDataType[] = [
     titleimage: vikingTitle,
     images: [viking1, viking2, viking3, viking4, viking5, viking6],
     description:
-      "바이킹 모델링에 애니메이션을 추가했습니다. 모델링 툴은 블렌더를 사용했습니다. WEBGL을 사용해서 웹사이트에 렌더링했습니다.",
+      "애니메이션을 적용한 바이킹 모델링입니다. 모델링 툴은 블렌더를 사용했습니다. WEBGL을 사용해서 웹사이트에 렌더링했습니다.",
   },
   {
     title: "GYRO SWING",
@@ -68,7 +68,7 @@ export const ProjectData: ProjectDataType[] = [
     titleimage: swingTitle,
     images: [swing1, swing2, swing3, swing4, swing5, swing6],
     description:
-      "자이로 스윙 모델링에 애니메이션을 추가했습니다. 모델링 툴은 블렌더를 사용했습니다. WEBGL을 사용해서 웹사이트에 렌더링했습니다.",
+      "애니메이션을 적용한 자이로스윙 모델링입니다. 모델링 툴은 블렌더를 사용했습니다. WEBGL을 사용해서 웹사이트에 렌더링했습니다.",
   },
   {
     title: "FERRIS WHEEL",
@@ -80,7 +80,7 @@ export const ProjectData: ProjectDataType[] = [
     titleimage: ferrisWheelTitle,
     images: [ferrisWheel1, ferrisWheel2, ferrisWheel3, ferrisWheel4, ferrisWheel5, ferrisWheel6],
     description:
-      "대관람차 모델링에 애니메이션을 추가했습니다. 모델링 툴은 블렌더를 사용했습니다. WEBGL을 사용해서 웹사이트에 렌더링했습니다.",
+      "애니메이션을 적용한 대관람차 모델링입니다. 모델링 툴은 블렌더를 사용했습니다. WEBGL을 사용해서 웹사이트에 렌더링했습니다.",
   },
   {
     title: "WALK MAN",
@@ -116,6 +116,6 @@ export const ProjectData: ProjectDataType[] = [
     titleimage: mixxRoomTitle,
     images: [mixxRoom1, mixxRoom2, mixxRoom3, mixxRoom4, mixxRoom5, mixxRoom6],
     description:
-      "NMIXX의 음반 Expergo의 수록곡 Young, Dumb, Stupid 뮤직비디오에 나온 가상의 공간을 웹사이트로 만들었습니다. 블렌더로 모델링하고 Substance Painter로 텍스쳐를 생성했습니다. 3D 공간을 탐색하는 경험을 제공합니다.",
+      "NMIXX의 음반 Expergo의 수록곡 Young, Dumb, Stupid M/V에 나온 가상의 공간을 웹사이트로 만들었습니다. 블렌더로 모델링하고 Substance Painter로 텍스쳐를 생성했습니다. 3D 공간을 탐색하는 경험을 제공합니다.",
   },
 ];
