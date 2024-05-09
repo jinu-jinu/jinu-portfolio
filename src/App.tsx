@@ -17,24 +17,36 @@ import { useLoadingActions } from "./stores/LoadingStore";
 import { useProgress } from "@react-three/drei";
 import Project from "./pages/Project/Project";
 import FollowCursor from "./components/common/otherMotions/FollowCursor";
-
-/*
-  쇼케이스 홈페이지도 추가하기
-  
-  3D 모델링을 전시하는 사이트
-*/
+import { supabase } from "./utils/supabaseClient";
+import { useProjectDataActions } from "./stores/ProjectDataStore";
+import { ProjectDataType } from "./types";
 
 const AssetDownLoader = () => {
   const handleAssetDownload = useLoadingActions("handleAssetDownload");
   const navigate = useNavigate();
-  const { loaded, total } = useProgress();
+  const handleProjectData = useProjectDataActions("handleProjectData") as (
+    v: ProjectDataType[]
+  ) => void;
 
   useEffect(() => {
-    if (loaded === total) {
-      navigate("/");
-      handleAssetDownload(true);
-    }
-  }, [loaded, total]);
+    const getProjects = async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*, project_images(url), project_main_image(url)")
+        .order("project_code")
+        .returns<ProjectDataType[]>();
+
+      if (error) window.location.reload();
+      if (data) {
+        handleProjectData(data);
+        navigate("/");
+        handleAssetDownload(true);
+      }
+    };
+
+    void getProjects();
+  }, []);
+
   return null;
 };
 

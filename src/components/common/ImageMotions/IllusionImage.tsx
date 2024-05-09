@@ -1,3 +1,4 @@
+import { imgUrl } from "@/utils/Utils";
 import { useScroll, useTransform, motion } from "framer-motion";
 
 const variants = {
@@ -20,7 +21,9 @@ const IllusionImage = ({ img, hovered }: { img: string; hovered: boolean }) => {
       style={{
         y,
       }}
-      src={img}
+      width="100%"
+      height="100%"
+      src={imgUrl(img)}
       className="w-[100%] h-[180%] object-cover saturate(0)"
     />
   );

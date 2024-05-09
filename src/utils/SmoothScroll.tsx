@@ -7,7 +7,7 @@ const SmoothScroll = ({ children }: { children: JSX.Element }) => {
   const lenis = useMemo(
     () =>
       new Lenis({
-        duration: 1.5,
+        duration: 2,
       }),
     []
   );

@@ -12,12 +12,14 @@ const Lists = () => {
   const isLoading = useIsLoading();
   const pageTransitioning = usePageTransitioning();
   const [isHovered, setIsHovered] = useState<string | null>(null);
-  const handleCurrentData = useProjectDataActions("handleCurrentData");
+  const handleCurrentData = useProjectDataActions("handleCurrentData") as (v: string) => void;
   const handleNextPath = usePathActions("handleNextPath") as (v: string) => void;
   const handlePageTransitionWait = usePathActions("handlePageTransitionWait") as (
     v: boolean
   ) => void;
   const handlePageTransitioning = usePathActions("handlePageTransitioning") as (v: boolean) => void;
+
+  if (!projectData) return null;
 
   return (
     <motion.div
@@ -52,7 +54,7 @@ const Lists = () => {
       }}
     >
       {projectData.map((data) => (
-        <List key={data.projectCode} {...data} isHovered={isHovered} />
+        <List key={data.project_code} {...data} isHovered={isHovered} />
       ))}
     </motion.div>
   );

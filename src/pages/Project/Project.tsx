@@ -1,4 +1,4 @@
-import { useCurrentData } from "@/stores/ProjectDataStore";
+import { useCurrentData, useProjectData } from "@/stores/ProjectDataStore";
 import "./project.scss";
 import Title from "./Title";
 import Images from "./Images";
@@ -9,9 +9,13 @@ import Footer from "@/components/Footer/Footer";
 
 const Project = () => {
   const currentData = useCurrentData();
+  const projectData = useProjectData();
   const pageTransitioning = usePageTransitioning();
 
-  if (!currentData) return <div className="">WAIT</div>;
+  if (!currentData || !projectData) return null;
+
+  const nextProjectIdx = currentData.idx === projectData.length ? 0 : currentData.idx;
+  const nextProject = projectData[nextProjectIdx];
 
   return (
     <motion.div
@@ -25,13 +29,10 @@ const Project = () => {
     >
       <div className="w-full space-y-[2rem] flex flex-col items-center lg:flex-row lg:items-start lg:space-y-0">
         <Title {...currentData} />
-        <Images images={currentData.images} />
+        <Images images={currentData.project_images} />
       </div>
 
-      <NextProject
-        nextProjectCode={currentData.nextProjectCode}
-        nextProjectTitle={currentData.nextProjectTitle}
-      />
+      <NextProject projectCode={nextProject.project_code} projectName={nextProject.name} />
 
       <Footer />
     </motion.div>

@@ -3,14 +3,14 @@ import { useProjectDataActions } from "@/stores/ProjectDataStore";
 import { motion } from "framer-motion";
 
 const NextProject = ({
-  nextProjectCode,
-  nextProjectTitle,
+  projectCode,
+  projectName,
 }: {
-  nextProjectCode: string;
-  nextProjectTitle: string;
+  projectCode: string;
+  projectName: string;
 }) => {
   const pageTransitioning = usePageTransitioning();
-  const handleCurrentData = useProjectDataActions("handleCurrentData");
+  const handleCurrentData = useProjectDataActions("handleCurrentData") as (v: string) => void;
   const handleNextPath = usePathActions("handleNextPath") as (v: string) => void;
   const handlePageTransitionWait = usePathActions("handlePageTransitionWait") as (
     v: boolean
@@ -22,8 +22,8 @@ const NextProject = ({
 
     handlePageTransitionWait(false);
     handlePageTransitioning(true);
-    handleCurrentData(nextProjectCode);
-    handleNextPath(`/project/${nextProjectCode}`);
+    handleCurrentData(projectCode);
+    handleNextPath(`/project/${projectCode}`);
   };
 
   return (
@@ -40,7 +40,7 @@ const NextProject = ({
         onClick={clickHandler}
         className="bg-black text-white font-bold rounded-xl px-10 py-5 dark:bg-white dark:text-black"
       >
-        {nextProjectTitle}
+        {projectName}
       </motion.button>
     </div>
   );

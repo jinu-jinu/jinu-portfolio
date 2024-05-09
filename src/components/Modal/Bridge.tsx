@@ -5,7 +5,8 @@ import {
   usePageTransitionEnd,
   useCurrentPath,
 } from "@/stores/PathStore";
-import { sleep } from "@/utils/Utils";
+import { useCurrentData } from "@/stores/ProjectDataStore";
+import { preloadImg, sleep } from "@/utils/Utils";
 import { animate, motion, useMotionValue, useMotionValueEvent, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +15,7 @@ let step = 0;
 
 const Bridge = () => {
   const navigate = useNavigate();
+  const currentData = useCurrentData();
   const currentPath = useCurrentPath();
   const nextPath = useNextPath();
   const pageTransitioning = usePageTransitioning();
@@ -36,7 +38,8 @@ const Bridge = () => {
   const startCountAnimation = async () => {
     ++step;
     await animate(count, 0.5, { duration: 1, ease: "circIn" });
-    await sleep(1000);
+    if (currentData?.project_images) await preloadImg(currentData.project_images);
+    await sleep(500);
     count.set(0.5);
     window.scrollTo(0, 0);
     ++step;

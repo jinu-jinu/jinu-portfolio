@@ -30,4 +30,20 @@ const detectMobileDevice = (agent: string) => {
 
 const isMobile = detectMobileDevice(window.navigator.userAgent);
 
-export { isDarkMode, rePosZ, sleep, isMobile };
+const imgUrl = (url: string) =>
+  `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/images/${url}`;
+
+const preloadImg = (imgs: { url: string }[]) => {
+  return Promise.all(
+    imgs.map(({ url }) => {
+      return new Promise((res, rej) => {
+        const img = new Image();
+        img.src = imgUrl(url);
+        img.onload = () => res(true);
+        img.onerror = () => rej(new Error("image preload error"));
+      });
+    })
+  );
+};
+
+export { isDarkMode, rePosZ, sleep, isMobile, imgUrl, preloadImg };

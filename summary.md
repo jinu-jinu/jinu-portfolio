@@ -324,3 +324,57 @@ void main() {
 - 데이터를 supabase에 저장해서 api 호출하는 방식으로 변경
 - mixxroom 사이트 최적화(조명, 스크롤 방식, 모달)
 - 모델링 전시 사이트 생성
+
+## DB에서 data를 받아오면서 생긴 문제들
+
+### 이미지 파일 확장자에 따른 비율 문제
+
+- 타이틀 이미지로 1920 1080 16:9 비율의 webp 이미지를 사용하고 있음
+- 같은 크기, 비율의 avif 이미지를 추가했는데 기존이미지와 비율이 달랐다(높이가 줄어들었음)
+- webp로 변경하니 원래 비율로 돌아옴
+- 확장자에 따라 이미지 크기가 달라지는 것 같으니 주의해야함
+
+### 이미지 로딩문제
+
+- 프로젝트 상세 페이지에 들어가면 바로 경로가 바뀌는게 아니고 트랜지션이 끝난 후 경로가 변경됌
+- 경로가 바뀌면 그 때 이미지를 db에서 불러오기 시작함
+- 텍스트는 바뀜과 동시에 나타나는데 이미지는 1,2초후 나타남
+- 프리로딩으로 문제를 해결
+- 트랜지션이 실행 중일 때 미리 이미지를 로딩하면 됌
+- 이미지를 다운 받으면 페이지가 캐싱해놓고 다음부터는 캐싱한 이미지를 사용함
+
+```tsx
+const preloadImg = (imgs: { url: string }[]) => {
+  return Promise.all(
+    imgs.map(({ url }) => {
+      return new Promise((res, rej) => {
+        const img = new Image();
+        img.src = imgUrl(url);
+        img.onload = () => res(true);
+        img.onerror = () => rej(new Error("image preload error"));
+      });
+    })
+  );
+};
+
+// Bridge.tsx
+const startCountAnimation = async () => {
+  ++step;
+  await animate(count, 0.5, { duration: 1, ease: "circIn" });
+  // 트랜지션A가 진행된 후 이미지를 프리로딩
+  // 이미지 프리로딩이 끝나면 트랜지션B가 실행된 후 페이지가 보여짐
+  if (currentData?.project_images) await preloadImg(currentData.project_images);
+  await sleep(500);
+  count.set(0.5);
+  window.scrollTo(0, 0);
+  ++step;
+  await animate(count, 1, { duration: 1, ease: "circIn" });
+};
+
+useEffect(() => {
+  if (pageTransitioning) {
+    void startCountAnimation();
+    handlePrevPath(currentPath);
+  }
+}, [pageTransitioning]);
+```

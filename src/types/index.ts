@@ -1,29 +1,15 @@
 import { Mesh } from "three";
 import { GLTF } from "three/examples/jsm/Addons.js";
 
-export type GLTFType = GLTF & {
-  nodes: {
-    J: Mesh;
-  };
-};
-
 export type ModelType = {
   J: Mesh;
 };
 
-export type DataDisplayType = "grid" | "list";
-
-export type ProjectDataType = {
-  title: string;
-  projectCode: string;
-  year: string;
-  technology: string;
-  titleimage: string;
-  images: string[];
-  nextProjectCode: string;
-  nextProjectTitle: string;
-  description: string;
+export type GLTFType = GLTF & {
+  nodes: ModelType;
 };
+
+export type DataDisplayType = "grid" | "list";
 
 export type dataDisplayElement = EventTarget & {
   dataset: {
@@ -72,10 +58,33 @@ export type PathStoreType = {
   };
 };
 
+export type ProjectDataType = {
+  description: string;
+  id: string;
+  name: string;
+  project_code: string;
+  project_images: { url: string }[];
+  project_main_image: { url: string }[];
+  technologies: string;
+  year: number;
+  idx: number;
+};
+
 export type ProjectDataStore = {
-  projectData: ProjectDataType[];
+  projectData: ProjectDataType[] | null;
   currentData: ProjectDataType | null;
   actions: {
+    handleProjectData: (v: ProjectDataType[]) => void;
     handleCurrentData: (v: string) => void;
+  };
+};
+
+export type Database = {
+  public: {
+    Tables: {
+      projects: {
+        Row: ProjectDataType;
+      };
+    };
   };
 };
