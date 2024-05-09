@@ -34,7 +34,6 @@ const List = ({
       id={project_code}
       onClick={() => {
         if (isHovered !== project_code) return;
-        console.log("asdf", project_code);
       }}
     >
       <div className="lg:flex-[0.2]">{year}</div>
