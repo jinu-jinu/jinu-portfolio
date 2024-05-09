@@ -20,24 +20,34 @@ const Contact = () => {
       className="w-full h-[100dvh] flex justify-center p-6"
     >
       <div className="w-full max-w-[50vmax] relative flex flex-col">
-        <div className="flex-1 flex flex-col justify-center">
+        <motion.div
+          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="flex-1 flex flex-col justify-center items-start"
+        >
           <Fill
             text="HELLO"
             trigger={!pageTransitionEnd}
             color="text-orange-500"
-            delay={1.2}
+            delay={0.8}
             duration={1}
           />
           <div className="text-[1.5vmax] leading-[1.7vmax]">
             <p>I'm based in Seoul</p>
             <p>Let's create a space together!</p>
           </div>
-        </div>
-        <div className="flex-1 flex flex-col justify-center items-end text-[1.5vmax] leading-[1.7vmax] font-bold">
+        </motion.div>
+        <motion.div
+          transition={{ delay: 0.2, duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="flex-1 flex flex-col justify-center items-end text-[1.5vmax] leading-[1.7vmax]"
+        >
           <p>kjwkjw5153@gmail.com</p>
           <p>010-8738-4513</p>
           <p>JINU KIM</p>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   );

@@ -14,6 +14,7 @@ const Fill = ({
   duration: number;
 }) => {
   const variants = {
+    initial: { width: "0%" },
     visible: {
       width: "100%",
       transition: {
@@ -21,7 +22,6 @@ const Fill = ({
         duration,
       },
     },
-    initial: { width: "0%" },
   };
 
   return (
