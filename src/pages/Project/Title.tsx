@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Title = ({ project_code, name, year, technologies, description, link }: ProjectDataType) => {
   return (
     <div className="w-full flex-1 flex flex-col lg:sticky lg:top-0 lg:left-0 lg:pt-[20vmin]">
-      <div className="flex justify-between items-start w-full max-w-[40vmax]">
+      <div className="flex justify-between items-start w-full lg:max-w-[40vmax]">
         <div className="space-y-2">
           <div className="leading-[18px]">
             <p className="text-orange-500 text-[12px]">PROJECT CODE</p>
