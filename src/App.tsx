@@ -14,7 +14,6 @@ import Fluid from "./components/3d/Fluid/Fluid";
 import { AnimatePresence } from "framer-motion";
 import { isDarkMode } from "./utils/Utils";
 import { useLoadingActions } from "./stores/LoadingStore";
-import { useProgress } from "@react-three/drei";
 import Project from "./pages/Project/Project";
 import FollowCursor from "./components/common/otherMotions/FollowCursor";
 import { supabase } from "./utils/supabaseClient";
