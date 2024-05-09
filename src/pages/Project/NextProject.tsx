@@ -31,10 +31,10 @@ const NextProject = ({
       <div className="text-[5vmax] font-black text-orange-500">NEXT</div>
       <motion.button
         whileHover={{
-          scale: 1.1,
+          scale: 1.2,
         }}
         whileTap={{
-          scale: 0.5,
+          scale: 0.8,
           filter: "blur(10px)",
         }}
         onClick={clickHandler}

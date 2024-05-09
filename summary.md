@@ -378,3 +378,8 @@ useEffect(() => {
   }
 }, [pageTransitioning]);
 ```
+
+## 추가할 것
+
+- 프로젝트 상세 페이지에 해당 프로젝트로 이동하는 visit 버튼 추가
+- about 페이지 좀 더 꾸미기

@@ -68,6 +68,7 @@ export type ProjectDataType = {
   technologies: string;
   year: number;
   idx: number;
+  link: string;
 };
 
 export type ProjectDataStore = {

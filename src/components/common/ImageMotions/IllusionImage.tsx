@@ -24,7 +24,7 @@ const IllusionImage = ({ img, hovered }: { img: string; hovered: boolean }) => {
       width="100%"
       height="100%"
       src={imgUrl(img)}
-      className="w-[100%] h-[180%] object-cover saturate(0)"
+      className="w-[100%] h-[180%] object-cover saturate(0) sm:h-[140%]"
     />
   );
 };
