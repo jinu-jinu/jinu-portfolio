@@ -18,11 +18,11 @@ const Title = () => {
         className="space-y-[1vmin] flex-1"
       >
         <p className="text-orange-500 text-[1vmax] font-bold">PORTFOLIO</p>
-        <div className="text-[5vmax] font-black leading-[5vmax]">
-          <h1>CREATIVE</h1>
-          <h1>DEVELOPER</h1>
-          <h1>JINU KIM</h1>
-        </div>
+        <h1 className="text-[5vmax] font-black leading-[5vmax] flex flex-col">
+          <span>CREATIVE</span>
+          <span>DEVELOPER</span>
+          <span>JINU KIM</span>
+        </h1>
       </motion.div>
 
       <motion.div
@@ -35,10 +35,7 @@ const Title = () => {
         animate={isLoading ? "initial" : "visible"}
         className="space-y-[3vmin] flex-1 sm:self-end"
       >
-        <h2 className="text-[1.6vmax]">
-          Create websites that stimulate users’ curiosity. Use graphic technology for better visual
-          effects.
-        </h2>
+        <h2 className="text-[1.6vmax]">시선을 사로잡는 웹경험. 나만의 느낌, 생각 표현하기</h2>
         <div className="flex items-baseline sm:justify-end text-orange-500 font-bold">
           <div className="relative mr-3">
             <div className="title__arrow border-orange-500" />
