@@ -8,6 +8,8 @@ const SmoothScroll = ({ children }: { children: JSX.Element }) => {
     () =>
       new Lenis({
         syncTouch: true,
+        wheelMultiplier: 0.5,
+        touchMultiplier: 0.5,
       }),
     []
   );
