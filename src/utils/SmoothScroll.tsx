@@ -1,13 +1,13 @@
 import { useIsLoading } from "@/stores/LoadingStore";
 import { usePageTransitioning } from "@/stores/PathStore";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 import { useEffect, useMemo } from "react";
 
 const SmoothScroll = ({ children }: { children: JSX.Element }) => {
   const lenis = useMemo(
     () =>
       new Lenis({
-        duration: 2,
+        syncTouch: true,
       }),
     []
   );
